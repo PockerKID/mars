@@ -1,5 +1,5 @@
 ## Mars
-> forked from [Tencent/mars](https://github.com/Tencent/mars)
+> Forked from [Tencent/mars](https://github.com/Tencent/mars)
 
 ## Purpose
 

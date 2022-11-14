@@ -292,17 +292,17 @@ void XloggerAppender::Open(const XLogConfig& _config) {
     bool use_mmap = false;
     if (OpenMmapFile(mmap_file_path, kBufferBlockLength, mmap_file_))  {
 	    if (_config.compress_mode_ == kZstd){
-		    log_buff_ = new LogZstdBuffer(mmap_file_.data(), kBufferBlockLength, true, _config.pub_key_.c_str(), _config.compress_level_);
+		    log_buff_ = new LogZstdBuffer(mmap_file_.data(), kBufferBlockLength, false, _config.pub_key_.c_str(), _config.compress_level_);
 	    }else {
-		    log_buff_ = new LogZlibBuffer(mmap_file_.data(), kBufferBlockLength, true, _config.pub_key_.c_str());
+		    log_buff_ = new LogZlibBuffer(mmap_file_.data(), kBufferBlockLength, false, _config.pub_key_.c_str());
 	    }
         use_mmap = true;
     } else {
         char* buffer = new char[kBufferBlockLength];
 	    if (_config.compress_mode_ == kZstd){
-		    log_buff_ = new LogZstdBuffer(buffer, kBufferBlockLength, true, _config.pub_key_.c_str(), _config.compress_level_);
+		    log_buff_ = new LogZstdBuffer(buffer, kBufferBlockLength, false, _config.pub_key_.c_str(), _config.compress_level_);
 	    } else {
-		    log_buff_ = new LogZlibBuffer(buffer, kBufferBlockLength, true, _config.pub_key_.c_str());
+		    log_buff_ = new LogZlibBuffer(buffer, kBufferBlockLength, false, _config.pub_key_.c_str());
 	    }
         use_mmap = false;
     }

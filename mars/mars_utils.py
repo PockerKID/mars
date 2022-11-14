@@ -4,6 +4,7 @@ import shutil
 import time
 import subprocess
 
+NDK_PATH = '/Users/z/Library/Android/sdk/ndk/20.1.5948944'
 
 COMM_COPY_HEADER_FILES = {
             "mars/comm/verinfo.h": "comm",
@@ -236,7 +237,8 @@ def make_static_framework(src_lib, dst_framework, header_file_mappings, header_f
 
 def check_ndk_env():
     try:
-        ndk_path = os.environ['NDK_ROOT']
+        # ndk_path = os.environ['NDK_ROOT']
+        ndk_path = NDK_PATH
     except KeyError as identifier:
         print("Error: ndk does not exist or you do not set it into NDK_ROOT.")
         return False
